@@ -26,13 +26,13 @@ def create_data_augmentation_pipeline():
 def create_image_classifier(image_size):
     classifier = tf.keras.Sequential([
         tf.keras.layers.Rescaling(1. / 255, input_shape=image_size + (3,)),
-        tf.keras.layers.Conv2D(16, 3, padding='same', activation='swish'),
+        tf.keras.layers.Conv2D(64, 3, padding='same', activation='swish'),
         tf.keras.layers.MaxPooling2D(),
         tf.keras.layers.Conv2D(32, 3, padding='same', activation='swish'),
         tf.keras.layers.MaxPooling2D(),
-        tf.keras.layers.Conv2D(64, 3, padding='same', activation='swish'),
-        tf.keras.layers.MaxPooling2D(),
+        tf.keras.layers.Conv2D(16, 3, padding='same', activation='swish'),
         tf.keras.layers.Dropout(0.2),
+        tf.keras.layers.MaxPooling2D(),
         tf.keras.layers.Flatten(),
         tf.keras.layers.Dense(128, activation='swish'),
         tf.keras.layers.Dense(3)
@@ -44,7 +44,7 @@ def train_image_classifier(
         data_directory="data/Data for test",
         save_to_directory="trained_model/",
         image_size=(128, 128),
-        n_epochs=20
+        n_epochs=10
     ):
 
     train_data, val_data = load_images(
