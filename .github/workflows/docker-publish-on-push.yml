@@ -19,5 +19,4 @@ jobs:
       - name: Build, Run, and Push Docker Image
         run: |
                 docker build . --tag ghcr.io/josephrrb/fulhaustest:latest
-                docker run ghcr.io/josephrrb/fulhaustest:latest
                 docker push ghcr.io/josephrrb/fulhaustest:latest
