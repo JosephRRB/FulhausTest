@@ -8,4 +8,4 @@ ADD ./core core/
 ADD ./trained_model trained_model/
 ADD ./validation_data validation_data/
 ADD main_app.py ./main_app.py
-CMD streamlit run main_app.py
+CMD streamlit run main_app.py --server.port $PORT
